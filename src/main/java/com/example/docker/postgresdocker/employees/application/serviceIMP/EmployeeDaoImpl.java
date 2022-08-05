@@ -58,27 +58,8 @@ public void updateEmployee(Employee emp) {
         template.update(sql,param, holder);
 
 }
+ 
 
-@Override
-public void executeUpdateEmployee(Employee emp) {
- final String sql = "update employee set employeeName=:employeeName, employeeAddress=:employeeAddress, employeeEmail=:employeeEmail where employeeId=:employeeId";
-
- Map<String,Object> map=new HashMap<String,Object>();  
- map.put("employeeId", emp.getEmployeeId());
- map.put("employeeName", emp.getEmployeeName());
- map.put("employeeEmail", emp.getEmployeeEmail());
- map.put("employeeAddress", emp.getEmployeeAddress());
-
- template.execute(sql,map,new PreparedStatementCallback<Object>() {  
-    @Override  
-    public Object doInPreparedStatement(PreparedStatement ps)  
-            throws SQLException, DataAccessException {  
-        return ps.executeUpdate();  
-    }  
-});  
-
-
-}
 
 @Override
 public void deleteEmployee(Employee emp) {
