@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.example.docker.postgresdocker.employees.application.serviceIMP.EmployeeDaoImpl;
 import com.example.docker.postgresdocker.employees.application.services.EmployeeDao;
 import com.example.docker.postgresdocker.employees.domain.Employee;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/empleado")
 public class ApplicationController {
 @Resource
-EmployeeDao employeeService;
+EmployeeDaoImpl employeeService;
 @GetMapping
 public List<Employee> getEmployees() {return employeeService.findAll();}
 @PostMapping

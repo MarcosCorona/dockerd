@@ -33,7 +33,7 @@ return template.query("select * from employee", new EmployeeRowMapper());
 }
 @Override
 public void insertEmployee(Employee emp) {
- final String sql = "insert into employee(employeeId, employeeName , employeeAddress,employeeEmail) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress)";
+ final String sql = "insert into employee(employeeId,employeeName ,employeeEmail ,employeeAddress) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress)";
 
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
@@ -59,26 +59,6 @@ public void updateEmployee(Employee emp) {
 
 }
 
-@Override
-public void executeUpdateEmployee(Employee emp) {
- final String sql = "update employee set employeeName=:employeeName, employeeAddress=:employeeAddress, employeeEmail=:employeeEmail where employeeId=:employeeId";
-
- Map<String,Object> map=new HashMap<String,Object>();  
- map.put("employeeId", emp.getEmployeeId());
- map.put("employeeName", emp.getEmployeeName());
- map.put("employeeEmail", emp.getEmployeeEmail());
- map.put("employeeAddress", emp.getEmployeeAddress());
-
- template.execute(sql,map,new PreparedStatementCallback<Object>() {  
-    @Override  
-    public Object doInPreparedStatement(PreparedStatement ps)  
-            throws SQLException, DataAccessException {  
-        return ps.executeUpdate();  
-    }  
-});  
-
-
-}
 
 @Override
 public void deleteEmployee(Employee emp) {

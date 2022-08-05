@@ -2,12 +2,14 @@ package com.example.docker.postgresdocker.employees.domain;
 
 import lombok.Data;
 
-@Data
+import javax.persistence.Table;
 
+@Data
+@Table(name="employee")
 public class Employee {
-    private String EmployeeId;
-    private String EmployeeName;
-    private String EmployeeEmail;
-    private String EmployeeAddress;
+    private String employeeId;
+    private String employeeName;
+    private String employeeEmail;
+    private String employeeAddress;
 
 }
